@@ -1,0 +1,4 @@
+https://github.com/aventurella/cookiecutter/tarball/dev#egg=cookiecutter-dev
+https://github.com/cloudseed-project/cloudseed2/tarball/simple#egg=cloudseed-dev
+https://github.com/aventurella/cookiecutter_django_secret/tarball/master#egg=cookiecutter_django_secret-0.1.0
+https://github.com/aventurella/cookiecutter_wordpress_secret/tarball/master#egg=cookiecutter_wordpress_secret-0.1.0

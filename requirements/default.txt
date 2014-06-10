@@ -1,0 +1,14 @@
+PyYAML==3.10
+docopt==0.6.1
+promptly>=0.5.4
+confypy==0.2.2
+beautifulsoup4>=4.3.2
+requests>=2.2.0
+cookiecutter==dev
+cloudseed==dev
+cookiecutter_django_secret==0.1.0
+cookiecutter_wordpress_secret==0.1.0
+# -e git+ssh://git@github.com/aventurella/cookiecutter.git@master#egg=cookiecutter-dev
+# -e git+ssh://git@github.com/cloudseed-project/cloudseed2.git@simple#egg=cloudseed-dev
+# -e git+ssh://git@github.com/aventurella/cookiecutter_django_secret.git@master#egg=cookiecutter_django_secret-dev
+# -e git+ssh://git@github.com/aventurella/cookiecutter_wordpress_secret.git@master#egg=cookiecutter_wordpress_secret-dev
