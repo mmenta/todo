@@ -1,7 +1,7 @@
 define(function(require, exports, module) {
 
 var marionette = require('marionette');
-var models = require('app/todo/models');
+var models = require('app/todo/models/models');
 var keys = require('built/app/keys');
 
 var inputView = marionette.ItemView.extend({

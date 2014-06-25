@@ -1,7 +1,7 @@
 define(function(require, exports, module) {
 
 
-var models = require('app/todo/models');
+var models = require('app/todo/models/models');
 
 var activeCollection = Backbone.Collection.extend({
     model: models.activeList,

@@ -8,16 +8,15 @@ var keys = require('built/app/keys');
 var modals = require('built/app/modals');
 var app = require('app/app');
 
-var collections         = require('app/todo/collections');
-var models              = require('app/todo/models');
+var collections         = require('app/todo/collections/collections');
+var models              = require('app/todo/models/models');
 
 var inputView           = require('app/todo/views/inputView').inputView;
 var listView            = require('app/todo/views/listView').listView;
 var infoView            = require('app/todo/views/infoView').infoView;
-var collectionView       = require('app/todo/views/collectionView').collectionView;
+var collectionView      = require('app/todo/views/collectionView').collectionView;
 
 var Model               = require('backbone').Model;
-
 
 var todos = new collections.activeCollection();
 var filtered = new collections.activeCollection();
