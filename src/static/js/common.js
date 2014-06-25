@@ -1,12 +1,13 @@
 require.config({
   baseUrl: 'static/js',
-  
+
   //temp for cache busting
   urlArgs: "bust=" + (new Date()).getTime(),
 
   paths : {
     'marionette': 'vendor/backbone/marionette',
     'hbs': 'vendor/require/hbs/hbs',
+    'unicorn': 'vendor/unicorns/unicorns',
 
     // used for hbs plugin, name is remapped to
     // lowercase as well for convenience. The optimizer
@@ -46,6 +47,7 @@ require.config({
             location: 'vendor/built',
             name: 'built'
         }
+
     ],
 
     map: {
@@ -89,6 +91,10 @@ require.config({
     'marionette': {
         'deps': ['jquery', 'underscore', 'backbone'],
         'exports': 'Marionette'
+    },
+
+    'unicorn': {
+        'exports': 'Unicorn'
     }
   }
 

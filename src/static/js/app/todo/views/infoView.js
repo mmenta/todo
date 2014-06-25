@@ -1,6 +1,7 @@
 define(function(require, exports, module) {
 
 var marionette = require('marionette');
+var unicorn    = require('unicorn');
 
 var infoView = marionette.ItemView.extend({
 
@@ -12,14 +13,16 @@ var infoView = marionette.ItemView.extend({
 		completed: '.completed',
 		complete: '.complete',
 		count: '.count',
-		clearCompleted: '.clear-completed'
+		clearCompleted: '.clear-completed',
+		unicorn: '.unicorns',
 	},
 
     events: {
         'click @ui.clearCompleted': 'clearCompleted',
         'click @ui.active': 'showActive',
         'click @ui.all': 'showAll',
-        'click @ui.completed': 'showCompleted'
+        'click @ui.completed': 'showCompleted',
+        'click @ui.unicorn': 'unicornShow'
     },
 
     initialize: function() {
@@ -30,35 +33,15 @@ var infoView = marionette.ItemView.extend({
         this.ui.count.html(this.collection.getActive().length);
     },
 
-    clearCompleted: function(e) {
-        //e.preventDefault();
-
+    clearCompleted: function() {
         var completed = this.collection.getCompleted();
             completed.forEach(function destroy(todo) {
             todo.destroy();
         });
     },
 
-    showActive: function(e) {
-        //e.preventDefault();
-
-        //$('.complete').parent().hide();
-        //$('.done').not('.complete').parent().show();
-
-    },
-
-    showCompleted: function(e) {
-        //e.preventDefault();
-
-        //$('.done').parent().show();
-        //$('.done').not('.complete').parent().hide();
-
-    },
-
-    showAll: function(e) {
-        //e.preventDefault();
-
-        //$('.done').parent().show();
+    unicornShow: function() {
+        cornify_add();
     }
 
 });
