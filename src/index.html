@@ -1,36 +1,44 @@
 <!DOCTYPE HTML>
 <html lang="en-US">
-    <head>
-        <meta charset="utf-8">
-        <title>Todo App</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" media="all" href="static/css/styles.css"/>
-        <script type="text/javascript" src="static/js/vendor/require.js"></script>
-        <script type="text/javascript">
-        require(['static/js/common'], function (common) {
-            require(['main']);
-        });
-        </script>
-    </head>
-    <body>
+<head>
+    <meta charset="utf-8">
+    <title>Todo App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="all" href="static/css/styles.css"/>
+    <script type="text/javascript" src="static/js/vendor/require.js"></script>
+    <script type="text/javascript">
+    require(['static/js/common'], function (common) {
+        require(['main']);
+    });
+    </script>
 
-		<section id="main">
-			<input id="new-todo" type="text" placeholder="What needs to be done?" value="" />
-        </section>
+</head>
+<body>
 
-        <section id="content">
-            <ul id="list"></ul>
-        </section>
+	<section id="header">
+		<input id="new-todo" type="text" placeholder="What needs to be done?" value="" />
+    </section>
 
-        <section id="info">
-            <span class="count">0</span> Item left
+    <section id="content"></section>
 
-            <a class="all" href="#all">All</a>
-            <a class="active" href="#active">Active</a>
-            <a class="completed" href="#completed">Completed</a>
+    <section id="footer">
+        <span class="count">0</span> Item left
 
-            <a class="clear-completed" href="#">Clear completed</a>
-        </section>
-    </body>
+        <a class="all" href="#all">All</a>
+        <a class="active" href="#active">Active</a>
+        <a class="completed" href="#completed">Completed</a>
+
+        <a class="clear-completed" href="#">Clear completed</a>
+    </section>
+
+    <script type="text/template" id="itemList">
+        {{title}}
+        <input class="done {{#if completed }}complete{{/if}}" type="checkbox"
+            {{#if completed}} checked="checked" {{/if}}
+        />
+        <button class="delete">X</button>
+    </script>
+
+</body>
 </html>
