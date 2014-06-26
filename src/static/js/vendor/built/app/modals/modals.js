@@ -19,12 +19,11 @@ function presentModal(view){
 
     var deferred = $.Deferred();
 
-    var modalView = new ModalView({view: view});
+    var modalView = new ModalView({itemView: view});
     queue.push(modalView);
 
     modalView.once(events.COMPLETE, function(){
-        // hand back the view we were given
-        deferred.resolve(view);
+        deferred.resolve(modalView);
     });
 
     if(queue.length === 1){
@@ -40,6 +39,7 @@ function triggerModal(modalView){
 }
 
 function nextModal(){
+
     if(queue.length > 0) {
         queue.shift();
         currentModal = null;

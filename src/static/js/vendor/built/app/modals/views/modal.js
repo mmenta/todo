@@ -2,34 +2,37 @@ define(function(require, exports, module) {
 
 var marionette = require('marionette');
 var events = require('../events');
-var keys = require('built/app/keys');
 
-var ModalView = marionette.View.extend({
-    className: 'modal-group',
-    view: null,
+// This requires that built/app/patches/render
+// has been applied as there is no template
+
+require('built/app/patches/render');
+
+var ModalView = marionette.ItemView.extend({
+    className: 'view',
+    itemView: null,
 
     initialize: function(options){
-        this.view = options.view;
-        this.region = new marionette.Region({el: this.el});
+        this.view = options.itemView;
     },
 
     onShow: function(){
+        this.view.setElement(this.$el, true);
+        this.view.render();
         this.view.once(events.COMPLETE, this.modalComplete, this);
-        this.region.show(this.view);
     },
 
     modalComplete: function(){
-        this.trigger(events.COMPLETE, this.view);
+        this._data = this.view.getData();
+        this.trigger(events.COMPLETE, this);
     },
 
-    keyDown: function(e){
-        if (e.keyCode == 27){
-            this.trigger(events.COMPLETE, this.view);
-        }
+    getData: function(){
+        return this._data;
     },
 
     onClose: function(){
-        this.region.close();
+        this.view.close();
     }
 });
 

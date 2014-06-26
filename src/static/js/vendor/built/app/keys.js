@@ -24,6 +24,7 @@ function getKeyFromEvent(e){
     return key;
 }
 
+
 function removeFromResponderChain(view){
     var array = _responderChain.getArray();
     var index = array.indexOf(view);
@@ -53,6 +54,7 @@ function initialize(options){
 }
 
 function _processKeys(sender, e){
+
     var result;
     var chain;
 
@@ -118,43 +120,33 @@ function _processModal(e){
 
     // a modal is present, so lets ask that first
     // then bail if nothing
-    if(!modals) return false;
+    if(!modals) return;
 
     var currentModal = modals.getCurrentModal();
     var result;
-    if(!currentModal) return false;
 
-    var chain = [currentModal.view, currentModal];
-    result = _.find(chain, function(item){
-        if(item.performKeyEquivalent){
+    if(currentModal){
+        var view = currentModal.view;
+
+        if(view.performKeyEquivalent){
             // returns true to stop the chain
             // returns false to keep things moving.
-            return item.performKeyEquivalent(e);
+            if (view.performKeyEquivalent(e)){
+                _completeEvent(e);
+                return;
+            }
         }
-    });
 
-    if(result){
-        _completeEvent(e);
+        if(view.keyDown){
+            // returns true to stop the chain
+            // returns false to keep things moving.
+            view.keyDown(e);
+        }
+
         return true;
     }
 
-    // No one in the chain wanted to handle the KeyEquivalent
-    // lets ask them if they would like to handle the plain
-    // key event:
-
-    result = _.find(chain, function(item){
-        if(item.keyDown){
-            // returns true to stop the chain
-            // returns false to keep things moving.
-            return item.keyDown(e);
-        }
-    });
-
-    if(result){
-        _completeEvent(e);
-    }
-
-    return true;
+    return false;
 }
 
 function _completeEvent(e){
@@ -165,6 +157,5 @@ function _completeEvent(e){
 exports.initialize = initialize;
 exports.getKeyFromEvent = getKeyFromEvent;
 exports.registerInResponderChain = registerInResponderChain;
-exports.removeFromResponderChain = removeFromResponderChain;
 });
 

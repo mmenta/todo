@@ -33,10 +33,6 @@ var IndexManager = marionette.Controller.extend({
         this._dispatchChange(value);
     },
 
-    getLastIndex: function() {
-        return this._lastIndex;
-    },
-
     getIndex: function(){
         return this.range.getValue();
     },
@@ -52,7 +48,6 @@ var IndexManager = marionette.Controller.extend({
         }
 
         this.setIndex(nextIndex);
-
         return nextIndex;
     },
 
@@ -71,7 +66,7 @@ var IndexManager = marionette.Controller.extend({
     },
 
     _dispatchChange: function() {
-        this.trigger(events.CHANGE, this, this.getIndex());
+        this.trigger(events.CHANGE, this);
     }
 });
 

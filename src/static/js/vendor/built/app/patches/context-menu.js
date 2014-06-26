@@ -3,13 +3,8 @@ define(function (require, exports, module) {
     var marionette = require('marionette');
     var PopView = require('built/app/popovers').PopView;
     var WindowResponder = require('built/core/responders/window').WindowResponder;
-    var ScrollResponder = require('built/core/responders/scroll').ScrollResponder;
 
     _.extend(marionette.View.prototype, {
-
-        uncontextMenus: function(){
-            delete this.events['contextmenu'];
-        },
 
         contextMenus: function(){
             // If you are calling this method in your classes
@@ -64,12 +59,42 @@ define(function (require, exports, module) {
                 }
             });
 
-            var scrollResponder = new ScrollResponder({
-                el: $(window),
-                scroll: function(){
-                    menu.close();
-                }
-            });
+            // disable srolling
+            // but keep the scrollbars:
+            // http://stackoverflow.com/questions/8701754/just-disable-scroll-not-hide-it
+            //
+            // There are other solutions
+            // http://stackoverflow.com/questions/4770025/how-to-disable-scrolling-temporarily
+            // DOMMouseScroll in the above is FireFox only.
+
+            var _origStyles = {};
+            var _$body = $('body');
+            var _scrollTop = $(window).scrollTop();
+
+            function disableScroll(){
+                var targets = ['position', 'top', 'overflow-y', 'width'];
+                _.each(targets, function(key){
+                    // Go though the style property not css
+                    // if the style was not set, it will be empty
+                    // via .style where as .css() will present a
+                    // calculated value.
+                    _origStyles[key] = _$body.prop('style')[key];
+                });
+
+                _$body.css({
+                    position: 'fixed',
+                    width: '100%',
+                    overflowY: 'scroll',
+                    top: (-1 * _scrollTop) + 'px'
+                });
+            }
+
+            function enableScroll(){
+                _$body.css(_origStyles);
+                $(window).scrollTop(_scrollTop);
+            }
+
+            disableScroll();
 
             // using clientX and clientY so we get normalized
             // coords regardless of scroll position.
@@ -81,13 +106,10 @@ define(function (require, exports, module) {
 
             .then(function(view){
                 windowResponder.close();
-                scrollResponder.close();
+                enableScroll();
                 completeHandler(view);
-            });
 
-            // We don't want the browsers context menu to appear, so
-            // block it.
-            evt.preventDefault();
+            });
 
             // let window know about this event.
             // When a context menu is displayed it uses the PopView
@@ -97,6 +119,10 @@ define(function (require, exports, module) {
             // 'click' and 'contextmenu' events on window. So lets be
             // sure to let it know.
             $(window).trigger(evt);
+
+            // We don't want the browsers context menu to appear, so
+            // block it.
+            evt.preventDefault();
         },
 
         _contextMenuAnchorAction: function(anchorRect, $anchorElement, viewRect, css){
@@ -120,6 +146,13 @@ define(function (require, exports, module) {
             } else {
                 css.top = anchorRect.y + $window.scrollTop();
             }
+
+            // due to the way we are blocking scrolling with styles.
+            // specifically setting the top positions to -$(window).scrollTop()
+            // we need to add back in that value to ensure a proper position;
+            var top = parseInt($('body').css('top'), 10);
+            css.top = css.top + (-1 * top);
+
         }
     });
 });

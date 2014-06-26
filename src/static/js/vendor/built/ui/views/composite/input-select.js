@@ -3,7 +3,6 @@ define(function (require, exports, module) {
 var marionette   = require('marionette');
 var InputSelect  = require('built/ui/controls/input-select').InputSelectMarionette;
 var helpers      = require('built/core/utils/helpers');
-var Scroller     = require('built/core/controls/page/scroller').Scroller;
 var focus        = require('built/core/events/focus');
 var data         = require('built/core/events/data');
 var events       = require('built/core/events/event');
@@ -13,13 +12,12 @@ var InputSelectComposite =  marionette.CompositeView.extend({
     debounceDelay: 300,
     acceptsMouseEnterExit:true,
 
-    constructor: function(options){
-        marionette.CollectionView.prototype.constructor.apply(this, helpers.slice(arguments));
-        this.listenTo(this, 'show', this.BUILTShow, this);
-        this.listenTo(this, 'close', this.BUILTClose, this);
+    initialize : function(options){
+         this.options = options;
     },
 
-    BUILTShow : function(){
+    onShow : function(){
+
         var options = {
             el: this.ui.input,
             debounceDelay: this.debounceDelay,
@@ -34,11 +32,6 @@ var InputSelectComposite =  marionette.CompositeView.extend({
         this.listenTo(this.inputSelect, data.DATA, this.onData);
         this.listenTo(this.inputSelect, events.CANCEL, this.onCancel);
         this.listenTo(this.inputSelect, events.SELECT, this.onSelect);
-    },
-
-    BUILTClose: function(){
-        this.inputSelect.triggerMethod('close');
-        this.stopListening();
     },
 
     onSelect: function(sender, $el){

@@ -15,7 +15,7 @@ var InputSelectMarionette = InputSelect.extend({
 
     initialize : function() {
 
-        InputSelect.prototype.initialize.apply(this, arguments);
+        InputSelect.prototype.initialize.apply(this,arguments);
         this.on(focus.BLUR, this._onItemBlur);
         this.on(focus.FOCUS, this._onItemFocus);
         this.on(events.SELECT, this._onItemSelect);

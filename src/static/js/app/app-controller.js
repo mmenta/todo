@@ -8,13 +8,13 @@ var keys = require('built/app/keys');
 var modals = require('built/app/modals');
 var app = require('app/app');
 
-var collections         = require('app/todo/collections/collections');
-var models              = require('app/todo/models/models');
+var collections         = require('app/collections/collections');
+var models              = require('app/models/models');
 
-var inputView           = require('app/todo/views/inputView').inputView;
-var listView            = require('app/todo/views/listView').listView;
-var infoView            = require('app/todo/views/infoView').infoView;
-var collectionView      = require('app/todo/views/collectionView').collectionView;
+var inputView           = require('app/views/inputView').inputView;
+var listView            = require('app/views/listView').listView;
+var infoView            = require('app/views/infoView').infoView;
+var collectionView      = require('app/views/collectionView').collectionView;
 
 var Model               = require('backbone').Model;
 

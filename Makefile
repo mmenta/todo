@@ -49,3 +49,28 @@ count-html:
 	@find . -name '*.html' -not -path "./src/static/js/vendor/*" | wc -l
 	@echo 'HTML LOC:'
 	@find . -name '*.html' -not -path "./src/static/js/vendor/*" | xargs cat | wc -l
+
+install-test-reqs:
+	npm install karma --save-dev
+	npm install karma-jasmine@2_0 karma-chrome-launcher --save-dev
+	npm install karma-requirejs --save-dev
+
+install-test-cli:
+	npm install -g karma-cli
+
+install-test-coverage:
+	npm install istanbul karma-coverage --save-dev
+
+doc: html-clean rst-doc html-doc
+
+html-clean:
+	rm -rf ./docs/html
+
+rst-doc:
+	node_modules/.bin/jsdoc -t ./node_modules/jsdoc-rst-template/template --recurse ./src/static/js/app/ -d docs/rst
+
+html-doc:
+	sphinx-build -b html -c ./ ./docs/rst ./docs/html
+
+serve-doc:
+	cd docs/html && python -m SimpleHTTPServer

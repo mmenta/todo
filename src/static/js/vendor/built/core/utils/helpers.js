@@ -138,7 +138,6 @@ function throwError(message, name) {
   throw error;
 }
 
-
 // Exports
 
 exports.compose                    = compose;
@@ -153,4 +152,5 @@ exports.MSIEVersion                = _MSIEVersion();
 exports.isMSIE                     = exports.MSIEVersion > -1 ? true : false;
 exports.slice                      = slice;
 exports.throwError                 = throwError;
+
 });

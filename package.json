@@ -1,0 +1,12 @@
+{
+  "name": "dbtest",
+  "version": "0.0.0",
+  "description": "## Features",
+  "main": "build.js",
+  "author": "",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "jsdoc-rst-template": "0.0.17",
+    "jsdoc": "~3.3.0-alpha8"
+  }
+}
