@@ -1,6 +1,5 @@
 define(function(require, exports, module) {
 
-
 var activeList = Backbone.Model.extend({
 
     url: '/',
@@ -10,8 +9,6 @@ var activeList = Backbone.Model.extend({
         cid: null,
         completed: false
     },
-
-
 
     isCompleted: function() {
         return this.get('completed');

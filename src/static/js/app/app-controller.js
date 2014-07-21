@@ -11,10 +11,10 @@ var app = require('app/app');
 var collections         = require('app/collections/collections');
 var models              = require('app/models/models');
 
-var inputView           = require('app/views/inputView').inputView;
-var listView            = require('app/views/listView').listView;
-var infoView            = require('app/views/infoView').infoView;
-var collectionView      = require('app/views/collectionView').collectionView;
+var InputView           = require('app/views/inputView').InputView;
+var ListView            = require('app/views/listView').ListView;
+var InfoView            = require('app/views/infoView').InfoView;
+var CollectionView      = require('app/views/collectionView').CollectionView;
 
 var Model               = require('backbone').Model;
 
@@ -30,11 +30,11 @@ var AppController = marionette.Controller.extend({
         this.app = app;
 
 
-        var input = new inputView({
+        var input = new InputView({
             collection: todos
         });
 
-        var info = new infoView({
+        var info = new InfoView({
             collection: todos
         });
 
@@ -49,7 +49,7 @@ var AppController = marionette.Controller.extend({
         // Your Application's Regions are set in the app/app.js
         // everything else starts here. (or in another route :)
 
-        var composite = new collectionView({
+        var composite = new CollectionView({
             collection: todos
         });
 
@@ -61,7 +61,7 @@ var AppController = marionette.Controller.extend({
 
     filterAll: function() {
 
-        var composite = new collectionView({
+        var composite = new CollectionView({
             collection: todos
         });
 
@@ -73,7 +73,7 @@ var AppController = marionette.Controller.extend({
         var results = todos.where({completed: false});
         filtered.reset(results);
 
-        var composite = new collectionView({
+        var composite = new CollectionView({
             collection: filtered
         });
 
@@ -84,7 +84,7 @@ var AppController = marionette.Controller.extend({
         var results = todos.where({completed: true});
         filtered.reset(results);
 
-        var composite = new collectionView({
+        var composite = new CollectionView({
             collection: filtered
         });
 
@@ -95,4 +95,5 @@ var AppController = marionette.Controller.extend({
 });
 
 exports.AppController = AppController;
+
 });

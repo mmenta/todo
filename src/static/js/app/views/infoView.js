@@ -3,7 +3,7 @@ define(function(require, exports, module) {
 var marionette = require('marionette');
 var unicorn    = require('unicorn');
 
-var infoView = marionette.ItemView.extend({
+var InfoView = marionette.ItemView.extend({
 
     template: '#footer',
 
@@ -46,8 +46,6 @@ var infoView = marionette.ItemView.extend({
 
 });
 
-
-
-exports.infoView = infoView;
+exports.InfoView = InfoView;
 
 });

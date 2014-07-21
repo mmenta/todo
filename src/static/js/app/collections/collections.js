@@ -1,6 +1,5 @@
 define(function(require, exports, module) {
 
-
 var models = require('app/models/models');
 
 var activeCollection = Backbone.Collection.extend({
@@ -18,8 +17,6 @@ var activeCollection = Backbone.Collection.extend({
         return todo.isCompleted();
     }
 });
-
-
 
 exports.activeCollection = activeCollection;
 

@@ -4,7 +4,7 @@ var marionette = require('marionette');
 var models = require('app/models/models');
 var keys = require('built/app/keys');
 
-var inputView = marionette.ItemView.extend({
+var InputView = marionette.ItemView.extend({
 
     template: '#header',
 
@@ -17,9 +17,7 @@ var inputView = marionette.ItemView.extend({
     },
 
     initialize: function() {
-
         this.BUILT();
-
     },
 
     onKeypress: function(e){
@@ -41,18 +39,11 @@ var inputView = marionette.ItemView.extend({
     },
 
     BUILT: function() {
-
         keys.initialize();
-
-
-
-
     }
 
 });
 
-
-exports.inputView = inputView;
-
+exports.InputView = InputView;
 
 });
