@@ -19,6 +19,7 @@ var _keyResponder;
 
 function getKeyFromEvent(e){
     var key = String.fromCharCode(e.which);
+    if(e.which==13) key = 'enter';
     if(!e.shiftKey) key = key.toLowerCase();
 
     return key;

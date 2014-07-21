@@ -18,7 +18,7 @@ var InputView = marionette.ItemView.extend({
     },
 
     initialize: function() {
-        this.BUILT();
+        keys.initialize();
     },
 
     onKeypress: function(e){
@@ -27,16 +27,11 @@ var InputView = marionette.ItemView.extend({
         var key = keys.getKeyFromEvent(e);
         var newItem = new models.Task({ title: todoText });
 
-		if( e.which === 13 && todoText ) {
+		if( key == 'enter' && todoText ) {
             this.collection.add(newItem);
-            newItem.set({ id: newItem.cid });
 			//clear input
 			this.ui.input.val('');
 		}
-    },
-
-    BUILT: function() {
-        keys.initialize();
     }
 
 });
