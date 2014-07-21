@@ -1,6 +1,6 @@
 define(function(require, exports, module) {
 
-var activeList = Backbone.Model.extend({
+var Task = Backbone.Model.extend({
 
     url: '/',
 
@@ -16,6 +16,6 @@ var activeList = Backbone.Model.extend({
 
 });
 
-exports.activeList = activeList;
+exports.Task = Task;
 
 });

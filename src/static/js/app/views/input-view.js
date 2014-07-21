@@ -1,7 +1,7 @@
 define(function(require, exports, module) {
 
 var marionette = require('marionette');
-var models = require('app/models/models');
+var models = require('app/models/task');
 var keys = require('built/app/keys');
 
 var InputView = marionette.ItemView.extend({
@@ -27,7 +27,7 @@ var InputView = marionette.ItemView.extend({
 
 		if( e.which === 13 && todoText ) {
 
-            var newItem = new models.activeList({ title: todoText });
+            var newItem = new models.Task({ title: todoText });
 
             this.collection.add(newItem);
 

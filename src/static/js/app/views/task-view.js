@@ -2,7 +2,7 @@ define(function(require, exports, module) {
 
 var marionette = require('marionette');
 
-var ListView = marionette.ItemView.extend({
+var TaskView = marionette.ItemView.extend({
 
     template: '#itemList',
     tagName: 'li',
@@ -40,6 +40,6 @@ var ListView = marionette.ItemView.extend({
 
 });
 
-exports.ListView = ListView;
+exports.TaskView = TaskView;
 
 });

@@ -1,17 +1,17 @@
 define(function(require, exports, module) {
 
 var marionette = require('marionette');
-var ListView   = require('app/views/listView').ListView;
+var TaskView   = require('app/views/task-view').TaskView;
 
-var CollectionView = marionette.CollectionView.extend({
+var TasksView = marionette.CollectionView.extend({
     tagName: 'ul',
-    itemView: ListView,
+    itemView: TaskView,
 
     initialize: function() {
         this.listenTo(this.collection, 'all', this.render);
     }
 });
 
-exports.CollectionView = CollectionView;
+exports.TasksView = TasksView;
 
 });

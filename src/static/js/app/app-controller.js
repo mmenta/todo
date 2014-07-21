@@ -8,18 +8,18 @@ var keys = require('built/app/keys');
 var modals = require('built/app/modals');
 var app = require('app/app');
 
-var collections         = require('app/collections/collections');
-var models              = require('app/models/models');
+var Tasks               = require('app/collections/tasks').Tasks;
+var Task                = require('app/models/task').Task;
 
-var InputView           = require('app/views/inputView').InputView;
-var ListView            = require('app/views/listView').ListView;
-var InfoView            = require('app/views/infoView').InfoView;
-var CollectionView      = require('app/views/collectionView').CollectionView;
+var InputView           = require('app/views/input-view').InputView;
+var TaskView            = require('app/views/task-view').TaskView;
+var InfoView            = require('app/views/info-view').InfoView;
+var TasksView           = require('app/views/tasks-view').TasksView;
 
 var Model               = require('backbone').Model;
 
-var todos = new collections.activeCollection();
-var filtered = new collections.activeCollection();
+var todos = new Tasks;
+var filtered = new Tasks;
 
 var AppController = marionette.Controller.extend({
 
@@ -40,40 +40,29 @@ var AppController = marionette.Controller.extend({
 
         this.app.header.show(input);
         this.app.footer.show(info);
-
     },
 
     index: function(){
-
-        /* Ready. Set. Go! */
-        // Your Application's Regions are set in the app/app.js
-        // everything else starts here. (or in another route :)
-
-        var composite = new CollectionView({
+        var composite = new TasksView({
             collection: todos
         });
 
         this.app.content.show(composite);
-
-        /* ---------- */
-
     },
 
     filterAll: function() {
-
-        var composite = new CollectionView({
+        var composite = new TasksView({
             collection: todos
         });
 
         this.app.content.show(composite);
-
     },
 
     filterActive: function() {
         var results = todos.where({completed: false});
         filtered.reset(results);
 
-        var composite = new CollectionView({
+        var composite = new TasksView({
             collection: filtered
         });
 
@@ -84,12 +73,11 @@ var AppController = marionette.Controller.extend({
         var results = todos.where({completed: true});
         filtered.reset(results);
 
-        var composite = new CollectionView({
+        var composite = new TasksView({
             collection: filtered
         });
 
         this.app.content.show(composite);
-
     }
 
 });

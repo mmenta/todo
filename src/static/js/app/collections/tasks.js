@@ -1,9 +1,9 @@
 define(function(require, exports, module) {
 
-var models = require('app/models/models');
+var Task = require('app/models/task');
 
-var activeCollection = Backbone.Collection.extend({
-    model: models.activeList,
+var Tasks = Backbone.Collection.extend({
+    model: Task,
 
     getCompleted: function() {
         return this.filter(this._isCompleted);
@@ -18,6 +18,6 @@ var activeCollection = Backbone.Collection.extend({
     }
 });
 
-exports.activeCollection = activeCollection;
+exports.Tasks = Tasks;
 
 });
