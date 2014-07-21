@@ -16,31 +16,11 @@
 </head>
 <body>
 
-	<section id="header">
-		<input id="new-todo" type="text" placeholder="What needs to be done?" value="" />
-    </section>
+	<section id="header"></section>
 
     <section id="content"></section>
 
-    <section id="footer">
-        <span class="count">0</span> Item left
-
-        <a class="all" href="#all">All</a>
-        <a class="active" href="#active">Active</a>
-        <a class="completed" href="#completed">Completed</a>
-
-        <a class="clear-completed" href="#">Clear completed</a>
-
-        <button class="unicorns" href="#">Do Not Press!</button>
-    </section>
-
-    <script type="text/template" id="itemList">
-        {{title}}
-        <input class="done {{#if completed }}complete{{/if}}" type="checkbox"
-            {{#if completed}} checked="checked" {{/if}}
-        />
-        <button class="delete">X</button>
-    </script>
+    <section id="footer"></section>
 
 </body>
 </html>

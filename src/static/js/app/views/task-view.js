@@ -1,10 +1,11 @@
 define(function(require, exports, module) {
 
 var marionette = require('marionette');
+var templateTask = require('hbs!app/templates/task');
 
 var TaskView = marionette.ItemView.extend({
 
-    template: '#itemList',
+    template: templateTask,
     tagName: 'li',
     className: 'item',
 

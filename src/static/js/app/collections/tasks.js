@@ -3,6 +3,7 @@ define(function(require, exports, module) {
 var Task = require('app/models/task');
 
 var Tasks = Backbone.Collection.extend({
+
     model: Task,
 
     getCompleted: function() {
@@ -16,6 +17,7 @@ var Tasks = Backbone.Collection.extend({
     _isCompleted: function(todo) {
         return todo.isCompleted();
     }
+
 });
 
 exports.Tasks = Tasks;

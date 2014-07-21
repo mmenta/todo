@@ -6,7 +6,7 @@ require.config({
 
   paths : {
     'marionette': 'vendor/backbone/marionette',
-    'hbs': 'vendor/require/hbs/hbs',
+    'hbs': 'vendor/require/hbs',
     'unicorn': 'vendor/unicorns/unicorns',
 
     // used for hbs plugin, name is remapped to

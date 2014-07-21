@@ -2,10 +2,11 @@ define(function(require, exports, module) {
 
 var marionette = require('marionette');
 var unicorn    = require('unicorn');
+var templateFooter = require('hbs!app/templates/footer');
 
 var InfoView = marionette.ItemView.extend({
 
-    template: '#footer',
+    template: templateFooter,
 
     ui: {
 		all: '.all',
