@@ -25,13 +25,13 @@ var TaskView = marionette.ItemView.extend({
     },
 
     onChecked: function() {
+        var isChecked = this.ui.checked.is(':checked');
 
-        if(this.ui.checked.is(':checked')) {
+        if(isChecked) {
             this.model.set({ completed: true });
         } else {
             this.model.set({ completed: false });
         }
-
     },
 
     onDelete: function() {

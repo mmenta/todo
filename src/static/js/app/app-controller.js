@@ -8,13 +8,13 @@ var keys = require('built/app/keys');
 var modals = require('built/app/modals');
 var app = require('app/app');
 
-var Tasks               = require('app/collections/tasks').Tasks;
-var Task                = require('app/models/task').Task;
+var Tasks = require('app/collections/tasks').Tasks;
+var Task = require('app/models/task').Task;
 
-var InputView           = require('app/views/input-view').InputView;
-var TaskView            = require('app/views/task-view').TaskView;
-var InfoView            = require('app/views/info-view').InfoView;
-var TasksView           = require('app/views/tasks-view').TasksView;
+var InputView = require('app/views/input-view').InputView;
+var TaskView = require('app/views/task-view').TaskView;
+var InfoView = require('app/views/info-view').InfoView;
+var TasksView = require('app/views/tasks-view').TasksView;
 
 var AppController = marionette.Controller.extend({
 
@@ -39,42 +39,24 @@ var AppController = marionette.Controller.extend({
         this.app.footer.show(info);
     },
 
-    index: function(){
-        var tasks = new TasksView({
-            collection: this.todos
-        });
-
-        this.app.content.show(tasks);
+    _updateContent: function(collection) {
+        this.app.content.show(
+            new TasksView({ collection: collection })
+        );
     },
 
     filterAll: function() {
-        var tasks = new TasksView({
-            collection: this.todos
-        });
-
-        this.app.content.show(tasks);
+        this._updateContent(this.todos);
     },
 
     filterActive: function() {
-        var results = this.todos.where({completed: false});
-        this.filtered.reset(results);
-
-        var tasks = new TasksView({
-            collection: this.filtered
-        });
-
-        this.app.content.show(tasks);
+        this.filtered.reset(this.todos.getActive());
+        this._updateContent(this.filtered);
     },
 
     filterCompleted: function() {
-        var results = this.todos.where({completed: true});
-        this.filtered.reset(results);
-
-        var tasks = new TasksView({
-            collection: this.filtered
-        });
-
-        this.app.content.show(tasks);
+        this.filtered.reset(this.todos.getCompleted());
+        this._updateContent(this.filtered);
     }
 
 });
@@ -82,3 +64,25 @@ var AppController = marionette.Controller.extend({
 exports.AppController = AppController;
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
