@@ -27,7 +27,6 @@ var AppController = marionette.Controller.extend({
         this.todos = new Tasks;
         this.filtered = new Tasks;
 
-
         var input = new InputView({
             collection: this.todos
         });
@@ -41,41 +40,41 @@ var AppController = marionette.Controller.extend({
     },
 
     index: function(){
-        var composite = new TasksView({
+        var tasks = new TasksView({
             collection: this.todos
         });
 
-        this.app.content.show(composite);
+        this.app.content.show(tasks);
     },
 
     filterAll: function() {
-        var composite = new TasksView({
+        var tasks = new TasksView({
             collection: this.todos
         });
 
-        this.app.content.show(composite);
+        this.app.content.show(tasks);
     },
 
     filterActive: function() {
         var results = this.todos.where({completed: false});
         this.filtered.reset(results);
 
-        var composite = new TasksView({
+        var tasks = new TasksView({
             collection: this.filtered
         });
 
-        this.app.content.show(composite);
+        this.app.content.show(tasks);
     },
 
     filterCompleted: function() {
         var results = this.todos.where({completed: true});
         this.filtered.reset(results);
 
-        var composite = new TasksView({
+        var tasks = new TasksView({
             collection: this.filtered
         });
 
-        this.app.content.show(composite);
+        this.app.content.show(tasks);
     }
 
 });
