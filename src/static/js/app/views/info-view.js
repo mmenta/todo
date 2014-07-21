@@ -42,7 +42,7 @@ var InfoView = marionette.ItemView.extend({
     },
 
     unicornShow: function() {
-        cornify_add();
+        //cornify_add();
     }
 
 });
