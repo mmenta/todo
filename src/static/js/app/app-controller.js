@@ -16,11 +16,6 @@ var TaskView            = require('app/views/task-view').TaskView;
 var InfoView            = require('app/views/info-view').InfoView;
 var TasksView           = require('app/views/tasks-view').TasksView;
 
-var Model               = require('backbone').Model;
-
-var todos = new Tasks;
-var filtered = new Tasks;
-
 var AppController = marionette.Controller.extend({
 
     initialize: function(options){
@@ -29,13 +24,16 @@ var AppController = marionette.Controller.extend({
         // You can customize that as necessary.
         this.app = app;
 
+        this.todos = new Tasks;
+        this.filtered = new Tasks;
+
 
         var input = new InputView({
-            collection: todos
+            collection: this.todos
         });
 
         var info = new InfoView({
-            collection: todos
+            collection: this.todos
         });
 
         this.app.header.show(input);
@@ -44,7 +42,7 @@ var AppController = marionette.Controller.extend({
 
     index: function(){
         var composite = new TasksView({
-            collection: todos
+            collection: this.todos
         });
 
         this.app.content.show(composite);
@@ -52,29 +50,29 @@ var AppController = marionette.Controller.extend({
 
     filterAll: function() {
         var composite = new TasksView({
-            collection: todos
+            collection: this.todos
         });
 
         this.app.content.show(composite);
     },
 
     filterActive: function() {
-        var results = todos.where({completed: false});
-        filtered.reset(results);
+        var results = this.todos.where({completed: false});
+        this.filtered.reset(results);
 
         var composite = new TasksView({
-            collection: filtered
+            collection: this.filtered
         });
 
         this.app.content.show(composite);
     },
 
     filterCompleted: function() {
-        var results = todos.where({completed: true});
-        filtered.reset(results);
+        var results = this.todos.where({completed: true});
+        this.filtered.reset(results);
 
         var composite = new TasksView({
-            collection: filtered
+            collection: this.filtered
         });
 
         this.app.content.show(composite);
