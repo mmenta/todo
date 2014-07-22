@@ -25,9 +25,11 @@ var InputView = marionette.ItemView.extend({
         //check for enter key
 		var todoText = this.ui.input.val().trim();
         var key = keys.getKeyFromEvent(e);
-        var newItem = new models.Task({ title: todoText });
+        var newItem;
 
-		if( key == 'enter' && todoText ) {
+		if( key == '\r' && todoText ) {
+		    newItem = new models.Task({ title: todoText });
+
             this.collection.add(newItem);
 			//clear input
 			this.ui.input.val('');

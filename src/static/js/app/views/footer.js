@@ -14,16 +14,14 @@ var InfoView = marionette.ItemView.extend({
 		completed: '.completed',
 		complete: '.complete',
 		count: '.count',
-		clearCompleted: '.clear-completed',
-		unicorn: '.unicorns',
+		clearCompleted: '.clear-completed'
 	},
 
     events: {
         'click @ui.clearCompleted': 'clearCompleted',
         'click @ui.active': 'showActive',
         'click @ui.all': 'showAll',
-        'click @ui.completed': 'showCompleted',
-        'click @ui.unicorn': 'unicornShow'
+        'click @ui.completed': 'showCompleted'
     },
 
     initialize: function() {
@@ -36,13 +34,7 @@ var InfoView = marionette.ItemView.extend({
 
     clearCompleted: function() {
         var completed = this.collection.getCompleted();
-            completed.forEach(function destroy(todo) {
-            todo.destroy();
-        });
-    },
-
-    unicornShow: function() {
-        //cornify_add();
+        this.collection.clearCompleted(completed);
     }
 
 });

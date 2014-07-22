@@ -11,7 +11,7 @@ var AppRouter  =  marionette.AppRouter.extend({
         'all': 'filterAll',
         'active': 'filterActive',
         'completed': 'filterCompleted',
-        '*index*': 'filterAll'
+        '*index': 'filterAll'
     }
 
 });

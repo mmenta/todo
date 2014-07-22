@@ -12,6 +12,14 @@ var Task = Backbone.Model.extend({
 
     isCompleted: function() {
         return this.get('completed');
+    },
+
+    toggleCompleted: function(isChecked) {
+        if(isChecked) {
+            this.set({ completed: true });
+        } else {
+            this.set({ completed: false });
+        }
     }
 
 });

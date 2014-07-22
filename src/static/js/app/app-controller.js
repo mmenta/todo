@@ -11,9 +11,9 @@ var app = require('app/app');
 var Tasks = require('app/collections/tasks').Tasks;
 var Task = require('app/models/task').Task;
 
-var InputView = require('app/views/input-view').InputView;
-var TaskView = require('app/views/task-view').TaskView;
-var InfoView = require('app/views/info-view').InfoView;
+var InputView = require('app/views/header').InputView;
+var TaskView = require('app/views/cells/task').TaskView;
+var InfoView = require('app/views/footer').InfoView;
 var TasksView = require('app/views/tasks-view').TasksView;
 
 var AppController = marionette.Controller.extend({
@@ -24,8 +24,8 @@ var AppController = marionette.Controller.extend({
         // You can customize that as necessary.
         this.app = app;
 
-        this.todos = new Tasks;
-        this.filtered = new Tasks;
+        this.todos = new Tasks();
+        this.filtered = new Tasks();
 
         var input = new InputView({
             collection: this.todos

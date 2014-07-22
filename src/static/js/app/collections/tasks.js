@@ -16,6 +16,12 @@ var Tasks = Backbone.Collection.extend({
 
     _isCompleted: function(todo) {
         return todo.isCompleted();
+    },
+
+    clearCompleted: function(completed) {
+        completed.forEach(function destroy(todo) {
+            todo.destroy();
+        });
     }
 
 });
