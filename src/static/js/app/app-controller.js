@@ -14,7 +14,7 @@ var Task = require('app/models/task').Task;
 var InputView = require('app/views/header').InputView;
 var TaskView = require('app/views/cells/task').TaskView;
 var InfoView = require('app/views/footer').InfoView;
-var TasksView = require('app/views/tasks-view').TasksView;
+var TasksView = require('app/views/task-list').TasksView;
 
 var AppController = marionette.Controller.extend({
 

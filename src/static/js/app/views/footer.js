@@ -12,7 +12,6 @@ var InfoView = marionette.ItemView.extend({
 		all: '.all',
 		active: '.active',
 		completed: '.completed',
-		complete: '.complete',
 		count: '.count',
 		clearCompleted: '.clear-completed'
 	},
