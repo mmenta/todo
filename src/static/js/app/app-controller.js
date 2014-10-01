@@ -11,8 +11,7 @@ var app = require('app/app');
 var Tasks = require('app/collections/tasks').Tasks;
 var Task = require('app/models/task').Task;
 
-var InputView = require('app/views/header').InputView;
-var TaskView = require('app/views/cells/task').TaskView;
+var InputView = require('app/views/input').InputView;
 var InfoView = require('app/views/footer').InfoView;
 var TasksView = require('app/views/task-list').TasksView;
 
@@ -35,7 +34,7 @@ var AppController = marionette.Controller.extend({
             collection: this.todos
         });
 
-        this.app.header.show(input);
+        this.app.input.show(input);
         this.app.footer.show(info);
     },
 
@@ -64,25 +63,3 @@ var AppController = marionette.Controller.extend({
 exports.AppController = AppController;
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

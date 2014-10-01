@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="all" href="static/css/styles.css"/>
     <script type="text/javascript" src="static/js/vendor/require.js"></script>
+
     <script type="text/javascript">
     require(['static/js/common'], function (common) {
         require(['main']);
@@ -15,8 +16,24 @@
 
 </head>
 <body>
-	<section id="header"></section>
-    <section id="content"></section>
-    <section id="footer"></section>
+
+    <nav></nav>
+
+    <section id="main">
+        <div class="container">
+            <header>
+                <h1 class="day">Thursday</h1>
+                <p class="date">July 31, 2014</p>
+            </header>
+
+            <div class="list-contain">
+                <div id="input"></div>
+                <div id="content"></div>
+
+                <div id="footer"></div>
+            </div>
+        </div>
+    </section>
+
 </body>
 </html>

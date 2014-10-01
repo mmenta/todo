@@ -6,7 +6,14 @@
   "author": "",
   "license": "BSD-2-Clause",
   "devDependencies": {
+    "istanbul": "^0.3.0",
+    "jsdoc": "~3.3.0-alpha8",
     "jsdoc-rst-template": "0.0.17",
-    "jsdoc": "~3.3.0-alpha8"
+    "karma": "^0.12.19",
+    "karma-chrome-launcher": "^0.1.4",
+    "karma-coverage": "^0.2.5",
+    "karma-jasmine": "^0.2.2",
+    "karma-requirejs": "^0.2.2",
+    "requirejs": "^2.1.14"
   }
 }

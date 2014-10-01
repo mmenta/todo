@@ -5,7 +5,9 @@ var tests = [
 
     // ---------------------------
     // Load Specs (AKA tests)
-    'tests/spec-app',
+    'tests/spec-input',
+    'tests/spec-task',
+    'tests/spec-footer'
 ];
 
 requirejs.config({
@@ -24,5 +26,8 @@ requirejs.config({
 
     deps: tests,
 
-    callback: window.__karma__.start
+    callback: function(){
+        jasmine.getFixtures().fixturesPath = '/base/src/static/js/app/templates';
+        window.__karma__.start();
+    }
 });

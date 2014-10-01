@@ -3,7 +3,7 @@ define(function(require, exports, module) {
     var app = new marionette.Application();
 
     app.addRegions({
-        header: '#header',
+        input: '#input',
         content: '#content',
         footer: '#footer'
     });

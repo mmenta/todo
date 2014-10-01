@@ -1,5 +1,7 @@
 define(function(require, exports, module) {
 
+var Backbone = require('backbone');
+
 var Task = Backbone.Model.extend({
 
     url: '/',
@@ -14,11 +16,15 @@ var Task = Backbone.Model.extend({
         return this.get('completed');
     },
 
+    _setCompleted: function(completed) {
+        this.set({ completed: completed });
+    },
+
     toggleCompleted: function(isChecked) {
         if(isChecked) {
-            this.set({ completed: true });
+            this._setCompleted(true);
         } else {
-            this.set({ completed: false });
+            this._setCompleted(false);
         }
     }
 
